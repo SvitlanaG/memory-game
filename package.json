@@ -1,0 +1,57 @@
+{
+  "name": "memory-game",
+  "version": "1.0.0",
+  "description": "A classic card-matching game built with HTML, CSS, and JavaScript.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack serve",
+    "build-dev": "webpack",
+    "build-prod": "webpack --node-env=production",
+    "clear": "rd /s /q dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SvitlanaG/memory-game.git"
+  },
+  "keywords": [
+    "memory-game",
+    "memory",
+    "card-game",
+    "matching-game",
+    "game",
+    "html",
+    "scss",
+    "javascript",
+    "vanilla-js",
+    "frontend"
+  ],
+  "author": "Svitlana G",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SvitlanaG/memory-game/issues"
+  },
+  "homepage": "https://github.com/SvitlanaG/memory-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.5",
+    "gh-pages": "^6.3.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.8",
+    "image-webpack-loader": "^8.1.0",
+    "mini-css-extract-plugin": "^2.10.2",
+    "postcss": "^8.5.28",
+    "postcss-loader": "^8.2.1",
+    "postcss-preset-env": "^11.6.0",
+    "sass": "^1.105.1",
+    "sass-loader": "^17.0.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3",
+    "webpack-dev-server": "^6.0.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
+  }
+}
