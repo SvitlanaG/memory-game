@@ -1,3 +1,5 @@
+import { createVictoryModal } from "./createVictoryModal";
+
 const PAIR_COUNT = 8;
 const MISMATCH_DELAY_MS = 1500;
 
@@ -27,6 +29,7 @@ function initializeGame(frame) {
   let boardLocked = false;
   let gameComplete = false;
   let mismatchTimer = null;
+  let victoryModal;
 
   function setCardFaceDown(card) {
     card.classList.remove("is-revealed", "is-matched");
@@ -62,6 +65,7 @@ function initializeGame(frame) {
   }
 
   function startNewGame() {
+    if (victoryModal) victoryModal.close();
     if (mismatchTimer !== null) {
       window.clearTimeout(mismatchTimer);
       mismatchTimer = null;
@@ -117,6 +121,7 @@ function initializeGame(frame) {
 
       if (pairsFound === PAIR_COUNT) {
         gameComplete = true;
+        victoryModal.open(moves);
         announceTurn(
           `You found all 8 pairs in ${moves} ${moves === 1 ? "move" : "moves"}.`,
         );
@@ -143,6 +148,9 @@ function initializeGame(frame) {
       board.setAttribute("aria-disabled", "false");
     }, MISMATCH_DELAY_MS);
   }
+
+  victoryModal = createVictoryModal(startNewGame);
+  frame.append(victoryModal.dialog);
 
   cards.forEach((card) => card.addEventListener("click", handleCardClick));
   newGameButton.addEventListener("click", startNewGame);

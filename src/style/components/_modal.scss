@@ -1,0 +1,50 @@
+@use "../abstracts/variables" as *;
+
+.modal {
+  width: min(420px, calc(100vw - 40px));
+  max-width: none;
+  max-height: calc(100vh - 40px);
+  padding: 0;
+  overflow: auto;
+  color: $ink-color;
+  background: transparent;
+  border: 0;
+}
+
+.modal::backdrop {
+  background: rgba($ink-color, .68);
+}
+
+.modal-panel {
+  box-sizing: border-box;
+  padding: 30px;
+  background: $cream-color;
+  border: 2px solid $ink-color;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba($ink-color, .24);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 25px;
+  text-align: center;
+}
+
+.victory-message {
+  margin: 14px 0 24px;
+  color: $ink-color;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 420px) {
+  .modal-panel { padding: 24px 18px; }
+  .modal-actions { flex-direction: column; }
+}
