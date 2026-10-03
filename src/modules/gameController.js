@@ -1,4 +1,6 @@
 import { createVictoryModal } from "./createVictoryModal";
+import { createLeaderboardModal } from "./createLeaderboardModal";
+import { loadResults, saveResult } from "./leaderboardStorage";
 
 const PAIR_COUNT = 8;
 const MISMATCH_DELAY_MS = 1500;
@@ -20,7 +22,8 @@ function initializeGame(frame) {
   const moveCounter = frame.querySelector("#stat-moves");
   const pairCounter = frame.querySelector("#stat-pairs");
   const announcer = frame.querySelector("#game-announcer");
-  const newGameButton = frame.querySelector(".button-primary");
+  const newGameButton = frame.querySelector(".header-actions .button-primary");
+  const leaderboardButton = frame.querySelector(".header-actions .button-secondary");
   const cards = Array.from(board.querySelectorAll(".memory-card"));
 
   let firstCard = null;
@@ -30,6 +33,8 @@ function initializeGame(frame) {
   let gameComplete = false;
   let mismatchTimer = null;
   let victoryModal;
+  let leaderboardModal;
+  let resultSaved = false;
 
   function setCardFaceDown(card) {
     card.classList.remove("is-revealed", "is-matched");
@@ -77,6 +82,7 @@ function initializeGame(frame) {
     boardLocked = false;
     board.setAttribute("aria-disabled", "false");
     gameComplete = false;
+    resultSaved = false;
     updateCounters();
     renderShuffledCards();
     announcer.textContent = "New game started. 16 face-down cards.";
@@ -121,6 +127,10 @@ function initializeGame(frame) {
 
       if (pairsFound === PAIR_COUNT) {
         gameComplete = true;
+        if (!resultSaved) {
+          saveResult(moves);
+          resultSaved = true;
+        }
         victoryModal.open(moves);
         announceTurn(
           `You found all 8 pairs in ${moves} ${moves === 1 ? "move" : "moves"}.`,
@@ -150,7 +160,12 @@ function initializeGame(frame) {
   }
 
   victoryModal = createVictoryModal(startNewGame);
-  frame.append(victoryModal.dialog);
+  leaderboardModal = createLeaderboardModal();
+  frame.append(victoryModal.dialog, leaderboardModal.dialog);
+
+  leaderboardButton.addEventListener("click", () => {
+    leaderboardModal.open(loadResults());
+  });
 
   cards.forEach((card) => card.addEventListener("click", handleCardClick));
   newGameButton.addEventListener("click", startNewGame);
