@@ -22,6 +22,7 @@ function createStat(label, value, id, total) {
 function createStats() {
   const stats = createElement("section", ["stats"]);
   stats.setAttribute("aria-label", "Game score");
+  stats.setAttribute("aria-live", "off");
   stats.append(
     createStat("Moves", "0", "moves"),
     createStat("Pairs found", "0", "pairs", 8),

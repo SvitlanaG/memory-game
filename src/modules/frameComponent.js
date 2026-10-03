@@ -17,6 +17,13 @@ function createComponent() {
 
   content.append(heading, hint, createBoard());
 
+  const announcer = createElement("p", ["sr-only"]);
+  announcer.id = "game-announcer";
+  announcer.setAttribute("role", "status");
+  announcer.setAttribute("aria-live", "polite");
+  announcer.setAttribute("aria-atomic", "true");
+  content.append(announcer);
+
   const footer = createElement("footer", ["game-footer"]);
   footer.textContent = "Take your time. Remember what you see.";
   content.append(footer);

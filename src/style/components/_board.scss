@@ -30,10 +30,24 @@
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
+.memory-card.is-revealed,
+.memory-card.is-matched {
+  background-color: $cream-color;
+  background-image: var(--card-front);
+  box-shadow: 0 5px 0 $teal-shadow-color, 0 9px 18px $card-shadow-color;
+}
+
+.memory-card.is-matched { cursor: default; }
+.memory-card.is-matched:hover { transform: none; }
+
 .memory-card:hover { transform: translateY(-3px); box-shadow: 0 7px 0 $teal-shadow-color, 0 12px 20px $card-hover-shadow-color; }
 .memory-card:active { transform: translateY(1px); box-shadow: 0 3px 0 $teal-shadow-color, 0 5px 12px $card-shadow-color; }
 .memory-card:focus-visible { outline: 3px solid $focus-color; outline-offset: 3px; }
 .memory-card::after { content: ""; position: absolute; inset: 0; border: 1px solid $card-border-color; border-radius: inherit; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-card { transition: none; }
+}
 
 @media (max-width: 600px) {
   .card-grid { gap: 10px; }
