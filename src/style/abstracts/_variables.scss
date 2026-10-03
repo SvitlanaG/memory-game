@@ -1,0 +1,31 @@
+/// Container's maximum width
+/// @type Length
+$max-width: 1440px !default;
+
+/// Container's minimum width
+/// @type Length
+$min-width: 360px !default;
+
+/// @type Color
+$ink-color: #031926 !default;
+$teal-color: #468189 !default;
+$seafoam-color: #9dbebb !default;
+$cream-color: #f4e9cd !default;
+
+$page-color: $seafoam-color !default;
+$surface-color: $cream-color !default;
+$white-color: $cream-color !default;
+$muted-text-color: $ink-color !default;
+$subtle-text-color: $ink-color !default;
+$stat-label-color: $ink-color !default;
+$stat-total-color: $teal-color !default;
+$accent-color: $seafoam-color !default;
+$focus-color: $teal-color !default;
+$ink-hover-color: $teal-color !default;
+$teal-shadow-color: $ink-color !default;
+$border-color: $seafoam-color !default;
+$soft-border-color: $seafoam-color !default;
+$card-border-color: rgba($cream-color, 0.35) !default;
+$soft-shadow-color: rgba($ink-color, 0.08) !default;
+$card-shadow-color: rgba($ink-color, 0.1) !default;
+$card-hover-shadow-color: rgba($ink-color, 0.13) !default;
