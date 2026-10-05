@@ -1,0 +1,44 @@
+@use "../abstracts/variables" as *;
+
+.leaderboard-empty {
+  margin: 22px 0;
+  color: $ink-color;
+  text-align: center;
+}
+
+.leaderboard-table-wrap {
+  max-height: min(55vh, 420px);
+  overflow: auto;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: $ink-color;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid $seafoam-color;
+}
+
+.leaderboard-table th {
+  position: sticky;
+  top: 0;
+  background: $cream-color;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.leaderboard-table td:first-child,
+.leaderboard-table th:first-child {
+  width: 25%;
+}
+
+@media (max-width: 420px) {
+  .leaderboard-table th,
+  .leaderboard-table td { padding: 9px 7px; }
+}

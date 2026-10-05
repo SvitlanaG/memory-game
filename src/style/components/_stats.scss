@@ -1,0 +1,36 @@
+@use "../abstracts/variables" as *;
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 27px;
+}
+
+.stat {
+  min-width: 126px;
+  padding: 12px 18px;
+  text-align: center;
+  background: $white-color;
+  border: 1px solid $soft-border-color;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px $soft-shadow-color;
+}
+
+.stat-label {
+  display: block;
+  margin-bottom: 5px;
+  color: $stat-label-color;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.stat-value { font-size: 22px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.stat-total { margin-left: 4px; color: $stat-total-color; font-size: 14px; }
+
+@media (max-width: 600px) {
+  .stats { margin-bottom: 24px; }
+  .stat { min-width: 104px; padding: 10px 12px; }
+}
